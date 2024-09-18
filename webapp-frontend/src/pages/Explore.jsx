@@ -9,6 +9,8 @@ import axios from 'axios';
 const Explore = () => {
   const [page,setPage]=useState(0);
   const [data,setData]=useState([]);
+  const [next,setNext]=useState(false);
+  const [prev,setPrev]=useState(true);
   useEffect(()=>{
     const getAll = async () => {
       try {
@@ -26,6 +28,28 @@ const Explore = () => {
     };
     getAll();
   },[page])
+  const changeTONext=()=>{
+    if(data.length!==0){
+      setPage(prev=>prev+1);
+      setPrev(false);
+      setNext(true);
+    }
+    else{
+      setNext(false);
+      setPrev(false);
+    }
+     
+  }
+  const changeToPrev=()=>{
+    if(page>0){
+      setPage(prev=>prev-1);
+      setPrev(true);
+      setNext(false);
+    }
+    else{
+      setPrev(false);
+    }
+  }
   return (
     <Container maxWidth={"xl"}
     sx={{
@@ -59,17 +83,18 @@ const Explore = () => {
         }}
       >
         <Button variant="outlined" 
+        disabled={prev}
           onClick={()=>{
-            setPage(prev=>prev-1)
-
+              changeToPrev();
           }}
         >Previous
         
         </Button>
        
         <Button variant="outlined" href="#outlined-buttons"
+         disabled={next}
         onClick={()=>{
-            setPage(prev=>prev+1)
+          changeTONext();
         }}
         >
           Next

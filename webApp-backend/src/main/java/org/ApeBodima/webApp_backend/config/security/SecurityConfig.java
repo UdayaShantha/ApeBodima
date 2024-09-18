@@ -41,6 +41,7 @@ public class SecurityConfig{
                 .cors((cors)->cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers("/api/v1/registration/user").permitAll()
+                        .requestMatchers("api/v1/bodime-details/*").permitAll()
                         .requestMatchers("/api/v1/bodimTypes/*").permitAll()
                         .anyRequest().authenticated()
                 )

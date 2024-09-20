@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import SearchingALertComponent from '../component/SearchingAlertComponent';
+
 import wallpaper from '../component/images/Rectangle1.png';
 import '../component/css/Home.css';
 import CardComponent from '../component/CardComponent';
@@ -52,7 +52,7 @@ const Home = () => {
 
   return (
     <div className="bd">
-      <SearchingALertComponent />
+      
       <div className="imgcontainer">
         <img src={wallpaper} alt="wallpaper" className="image" />
       </div>

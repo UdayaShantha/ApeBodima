@@ -1,7 +1,5 @@
 package org.ApeBodima.webApp_backend.controller;
 
-
-import org.ApeBodima.webApp_backend.DTO.request.BodimeContactSaveDTO;
 import org.ApeBodima.webApp_backend.DTO.request.BodimeDetailsSaveDTO;
 import org.ApeBodima.webApp_backend.service.serviceInterFaces.BodimeDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +8,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/bodime-details")
-@CrossOrigin(origins = "http://localhost:3000")
 public class BodimeDetailsController {
    @Autowired
     private BodimeDetailsService bodimeDetailsService;
-
 
     @PostMapping("/save/{userId}")
     public String saveCustomer(@RequestBody BodimeDetailsSaveDTO bodimeDetailsSaveDTO,@PathVariable(value="userId") String userId){
         if (bodimeDetailsSaveDTO == null) {
             throw new IllegalArgumentException("BodimeDetailsSaveDTO cannot be null");
         }
-
-
         String message = bodimeDetailsService.save(bodimeDetailsSaveDTO,userId);
         return message;
     }

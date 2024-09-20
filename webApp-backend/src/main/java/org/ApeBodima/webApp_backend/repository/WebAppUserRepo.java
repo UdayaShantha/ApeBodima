@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface WebAppUserRepo extends JpaRepository<WebApp_User,String> {
 
     //Return the WebApp_Users according to the username
-    WebApp_User findByUsername(String username);
+    Optional<WebApp_User> findByUsername(String username);
 
     Optional<WebApp_User> findByWebAppUserNIC(String webAppUserNIC);
 

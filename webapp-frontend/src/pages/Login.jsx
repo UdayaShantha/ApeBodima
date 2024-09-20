@@ -16,7 +16,7 @@ import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CloseIcon from '@mui/icons-material/Close';
 
-const Login = ({closeLogDialog ,logStatus}) => {
+const Login = ({closeLogDialog ,logStatus,registerStatus}) => {
   
   const [firstPassShow, setFirstPassShow] = useState(false);
 
@@ -35,6 +35,7 @@ const Login = ({closeLogDialog ,logStatus}) => {
     maxWidth={"md"}
 
     sx={{
+      position:"relative",
       bgcolor: "#EBEFFF",
       display: 'flex',
       justifyContent: 'center',
@@ -42,7 +43,6 @@ const Login = ({closeLogDialog ,logStatus}) => {
       marginTop:"10px",
       marginBottom:"10px",
       flexDirection:"column",
-      position:"relative"    
     }}
     >
        <IconButton
@@ -206,6 +206,10 @@ const Login = ({closeLogDialog ,logStatus}) => {
                   textDecoration: "none",
                 }}
                 href="#login"
+                onClick={()=>{
+                    logStatus(false);
+                    registerStatus(true);
+                }}
               >
                 Register
               </a>

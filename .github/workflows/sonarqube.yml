@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "development", "Production", "master", "developer-*" ]
   pull_request:
-    branches: [ "development","master","Production" ]
+    branches: [ "master","Production" ]
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
@@ -41,3 +41,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonar --info
+        working-directory: ./webApp-backend

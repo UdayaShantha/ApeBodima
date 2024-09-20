@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: auto;
+    height: 50px;
     padding: 4px 50px;
     overflow: hidden;
     justify-content: space-between; /* Ensure items are spread out */
@@ -22,7 +22,7 @@
     width: max-content;
   }
   
-  .header button:hover {
+  .header button:hover:not(:first-child) {
     background-color: black;
     transition: all 400ms ease-in;
     color: aliceblue;
@@ -101,7 +101,7 @@
       transition: all 400ms ease-in;
     }
   
-    .header button{
+    .header button:not(:first-child){
       display: none;
       transition: all 400ms ease-in;
     }

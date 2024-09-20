@@ -42,7 +42,7 @@ public class UserAccountManagementIMPL implements UserAccountManagementService {
         Object principal1 = authentication.getPrincipal();
         if (principal1 instanceof UserDetails) {
             String userName = ((UserDetails) principal1).getUsername();
-            WebApp_User webAppUser = webAppUserRepo.findByUsername(userName);
+            WebApp_User webAppUser = webAppUserRepo.findByUsername(userName).orElse(null);
             return new UserManagementDTO(
                     webAppUser.getWebAppUserNIC(),
                     webAppUser.getName(),
@@ -88,7 +88,7 @@ public class UserAccountManagementIMPL implements UserAccountManagementService {
             Object principal = authentication.getPrincipal();
             if (principal instanceof UserDetails) {
                 String user = ((UserDetails) principal).getUsername();
-                WebApp_User webAppUser = webAppUserRepo.findByUsername(user);
+                WebApp_User webAppUser = webAppUserRepo.findByUsername(user).orElse(null);
                 if (passwordEncoder.bCryptPasswordEncoder().matches(oldPass, webAppUser.getPassword())) {
                     if (newPass1.equals(newPass2)) {
                         webAppUser.setPassword(passwordEncoder.bCryptPasswordEncoder().encode(newPass1));
@@ -113,7 +113,7 @@ public class UserAccountManagementIMPL implements UserAccountManagementService {
         Object principle2 = authentication.getPrincipal();
         if (principle2 instanceof UserDetails) {
             String userName = ((UserDetails) principle2).getUsername();
-            WebApp_User webAppUser = webAppUserRepo.findByUsername(userName);
+            WebApp_User webAppUser = webAppUserRepo.findByUsername(userName).orElse(null);
             webAppUser.setProfileImg(file.getBytes());
             webAppUserRepo.save(webAppUser);
             return "imageUploaded";
@@ -129,7 +129,7 @@ public class UserAccountManagementIMPL implements UserAccountManagementService {
             Object principal = authentication.getPrincipal();
             if (principal instanceof UserDetails) {
                 String user = ((UserDetails) principal).getUsername();
-                WebApp_User webAppUser = webAppUserRepo.findByUsername(user);
+                WebApp_User webAppUser = webAppUserRepo.findByUsername(user).orElse(null);
                 if (passwordEncoder.bCryptPasswordEncoder().matches(userPassword, webAppUser.getPassword())) {
                         webAppUserRepo.deleteByUsername(user);
                     HttpSession session=request.getSession(false);

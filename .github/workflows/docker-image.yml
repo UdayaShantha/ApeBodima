@@ -1,8 +1,6 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ "Production", "master"]
   pull_request:
     branches: [ "master","Production" ]
     types: [opened, synchronize]
@@ -29,8 +27,16 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     -
-      name: Build and push
+      name: Build and push backend
       uses: docker/build-push-action@v6
+      working-directory: ./webApp-backend
       with:
           push: true
-          tags: user/app:latest
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/bodimabackend:latest
+    -
+      name: Build and push frontend
+      uses: docker/build-push-action@v6
+      working-directory:  ./webapp-frontend
+      with:
+          push: true
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/bodimafrontend:latest

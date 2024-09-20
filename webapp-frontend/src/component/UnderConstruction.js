@@ -6,16 +6,16 @@ const UnderConstruction =() => {
     <div style={{
         width:'50%',
         Height:'auto',
-        margin:'auto',
+        marginLeft:'auto',
+        marginRight:'auto',
         top:'5%',
-        left:'25%',
-        right:'25%',
+        
         display:'block',
         textAlign:'center',
         color:'black',
-        position:'absolute',
+        position:'relative',
         marginTop:'300px',
-        
+        alignItems:'center',
         fontSize:'60px',
         justifyContent:'center',
         borderRadius:'20px',

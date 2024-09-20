@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import {
   Container,
   Grid,
@@ -10,9 +10,7 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Card,
-  CardContent,
-  CardMedia,
+ 
   Button,
   ThemeProvider,
   createTheme,
@@ -23,6 +21,8 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import PeopleIcon from '@mui/icons-material/People';
 import axios from 'axios';
+import BoardimCard from '../component/BoardimCard';
+import bodimimage from '../component/images/BoardimCard.png';
 const theme = createTheme({
   typography: {
     fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif',
@@ -96,19 +96,19 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 
 const BoardingPlacesFinder = () => {
-  const [places, setPlaces] = useState([]);
+ // const [places, setPlaces] = useState([]);
   /*const [filters, setFilters] = useState({ price: '', distance: '', capacity: '' });*/
  /* const [searchQuery, setSearchQuery] = useState('');*/
 
-  useEffect(() => {
+ /* useEffect(() => {
     fetchPlaces();
-  }, []);
+  }, []);*/
 
-  const fetchPlaces = async (searchQuery = '', filters = {}) => {
-    const response = await fetch(`/api/places?search=${searchQuery}&${new URLSearchParams(filters)}`);
-    const data = await response.json();
-    setPlaces(data);
-  };
+ // const fetchPlaces = async (searchQuery = '', filters = {}) => {
+  //  const response = await fetch(`/api/places?search=${searchQuery}&${new URLSearchParams(filters)}`);
+   // const data = await response.json();
+   // setPlaces(data);
+ // };
 
 
 
@@ -128,7 +128,7 @@ const BoardingPlacesFinder = () => {
   const[maxDistance,setMaxDistance] = useState(0);
   const[capacity,setCapacity] = useState(0);
   
-
+  const [data,setData] = useState([]);
   const handleSearch = async (e) => {
     e.preventDefault();
     setpage(0);
@@ -141,6 +141,7 @@ const BoardingPlacesFinder = () => {
 
       // Display the response data in the console
       console.log('Response Data:', response.data);
+      setData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -211,7 +212,7 @@ const BoardingPlacesFinder = () => {
                         </InputAdornment>
                       }
                     >
-                      <MenuItem value="">All</MenuItem>
+                      <MenuItem value="" selected>All</MenuItem>
                       <MenuItem value="5000-">Below Rs.5000</MenuItem>
                       <MenuItem value="5000-10000">Rs.5000 - Rs.10000</MenuItem>
                       <MenuItem value="10000-20000">Rs.10000 - Rs.20000</MenuItem>
@@ -250,7 +251,7 @@ const BoardingPlacesFinder = () => {
                         </InputAdornment>
                       }
                     >
-                      <MenuItem value="">All</MenuItem>
+                      <MenuItem value="" selected>All</MenuItem>
                       <MenuItem value="0-1">Below 1km</MenuItem>
                       <MenuItem value="1-3">1 km - 3 km</MenuItem>
                       <MenuItem value="3-5">3 km - 5 km</MenuItem>
@@ -285,7 +286,7 @@ const BoardingPlacesFinder = () => {
                         </InputAdornment>
                       }
                     >
-                      <MenuItem value="">All</MenuItem>
+                      <MenuItem value="" selected>All</MenuItem>
                       <MenuItem value="1">Single</MenuItem>
                       <MenuItem value="2">Double</MenuItem>
                       <MenuItem value="3+">3+ People</MenuItem>
@@ -295,8 +296,28 @@ const BoardingPlacesFinder = () => {
               </Grid>
             </Grid>
           </Grid>
+          
         </StyledPaper>
-        <Grid container spacing={3}>
+        <div style={{
+          paddingLeft:'10px',
+          paddingRight:'10px',
+        width:'100%',
+        height:'auto',
+        display:'grid',
+        rowGap:'30px',
+        colomnGap:'0px',
+        justifyContent:'center',
+        gridTemplateColumns: 'repeat(3, 1fr)'
+        
+        
+      }}>
+          {data.map((item,index) => (
+               <BoardimCard key = {index} image={bodimimage} name={item.bodimPlaceName} price={item.price} description={item.type} rating={item.rating}/>
+          ))}
+         
+    
+      </div>
+        {/* <Grid container spacing={3}>
           {places.map((place) => (
             <Grid item xs={12} sm={6} md={4} key={place.id}>
               <Card
@@ -342,7 +363,9 @@ const BoardingPlacesFinder = () => {
             </Grid>
           ))}
         </Grid>
+        */}
       </StyledContainer>
+      
     </ThemeProvider>
   );
 };

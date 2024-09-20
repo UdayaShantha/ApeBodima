@@ -13,8 +13,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-
-const Register = ({ closeDialog, registerStatus }) => {
+const Register = ({ closeDialog, registerStatus ,logStatus}) => {
   const [showPass, setShowPass] = useState(false);
   const [firstPassShow, setFirstPassShow] = useState(false);
   const [password1, setPassword1] = useState("");
@@ -55,11 +54,13 @@ const Register = ({ closeDialog, registerStatus }) => {
 
     
   }
+  
 
   return (
     <Container
       maxWidth={"md"}
       sx={{
+        position:"relative",
         bgcolor: "#EBEFFF",
         display: "flex",
         justifyContent: "center",
@@ -67,16 +68,20 @@ const Register = ({ closeDialog, registerStatus }) => {
         marginTop: "10px",
         marginBottom: "10px",
         flexDirection: "column",
+        width:{
+          sm:"60%",
+          xs:"50%"
+        }
       }}
     >
       <IconButton
         sx={{
-          position: "fixed",
+          position: "absolute",
           right: {
-            xs: "20px",
-            md: "100px",
-            sm: "0px",
-            lg: "330px",
+            xs: "10px",
+            md: "10px",
+            sm: "10px",
+            lg: "10px",
           },
           top: {
             xs: "10px",
@@ -282,6 +287,10 @@ const Register = ({ closeDialog, registerStatus }) => {
                   textDecoration: "none",
                 }}
                 href="#login"
+                onClick={()=>{
+                  registerStatus(false);
+                  logStatus(true);
+                }}
               >
                 Login
               </a>

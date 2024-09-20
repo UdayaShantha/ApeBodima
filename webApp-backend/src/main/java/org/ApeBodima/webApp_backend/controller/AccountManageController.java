@@ -14,7 +14,6 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/userAccount")
-@CrossOrigin
 public class AccountManageController {
     @Autowired
     UserAccountManagementIMPL userAccountManagement;

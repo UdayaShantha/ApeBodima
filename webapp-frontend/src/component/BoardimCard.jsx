@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import FindInPageIcon from "@mui/icons-material/FindInPage";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import GradeIcon from "@mui/icons-material/Grade";
-const BoardimCard = ({image,name,price,description,rating}) => {
+const BoardimCard = ({ image, name, price, description, rating }) => {
   const [faviorite, setFaviorite] = useState(false);
-    const checkfaviorite=()=>{
-        if (faviorite === true) {
-            setFaviorite(false);
-          } else {
-            setFaviorite(true);
-          }
+  const checkfaviorite = () => {
+    if (faviorite === true) {
+      setFaviorite(false);
+    } else {
+      setFaviorite(true);
     }
+  };
   return (
     <Grid
       sx={{
@@ -20,6 +20,7 @@ const BoardimCard = ({image,name,price,description,rating}) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        padding: "16px",
       }}
     >
       <Grid
@@ -40,24 +41,28 @@ const BoardimCard = ({image,name,price,description,rating}) => {
       <Grid
         item
         sx={{
-          marginLeft: "40px",
+          display: "flex",
+          justifyContent: "flex-end", // Aligns Rating to the right
+          textAlign: "right",
+          marginRight: "10px", // Optional margin for spacing
         }}
       >
-        <Rating readOnly>
-          
-        </Rating>
+        <Rating readOnly />
       </Grid>
+
       <Grid
         item
         sx={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          marginTop:"10px"
         }}
       >
         <Typography
           sx={{
-            marginLeft: "20px",
+            marginLeft: "10px",
+            fontSize: "14px",
           }}
         >
           {name}
@@ -65,6 +70,7 @@ const BoardimCard = ({image,name,price,description,rating}) => {
         <Typography
           sx={{
             marginRight: "10px",
+            fontSize: "14px",
           }}
         >
           {price}
@@ -92,15 +98,9 @@ const BoardimCard = ({image,name,price,description,rating}) => {
           justifyContent: "space-between",
         }}
       >
-        <IconButton
-          onClick={() => {
-            {checkfaviorite()}
-          }}
-          sx={{
-            
-          }}
-        >
-          {faviorite ? <GradeIcon /> : <StarOutlineIcon />}<Typography>add faviorite</Typography> 
+        <IconButton onClick={() => checkfaviorite()} sx={{}}>
+          {faviorite ? <GradeIcon /> : <StarOutlineIcon />}
+          <Typography>add faviorite</Typography>
         </IconButton>
 
         <div>

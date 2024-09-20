@@ -1,15 +1,11 @@
 package org.ApeBodima.webApp_backend.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.ApeBodima.webApp_backend.DTO.request.BodimeContactSaveDTO;
-import org.ApeBodima.webApp_backend.DTO.request.BodimeReviewSaveDTO;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "bodime_details")
@@ -18,7 +14,8 @@ import java.util.Set;
 @Data
 public class Bodime_Detail {
     @Id
-    @Column(name = "bodim_ID", length = 4)
+    @Column(name = "bodim_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String bodimId;
 
     @Column(name = "price")
@@ -29,7 +26,6 @@ public class Bodime_Detail {
 
     @Column(name = "distance_to_UNI")
     private double distanceToUni;
-
 
     @Column(name = "type")
     private String type;
@@ -67,12 +63,31 @@ public class Bodime_Detail {
     @OneToMany(mappedBy = "bodime_details" )
     private List<Bodime_Review> bodime_reviews;
 
-    @OneToMany(mappedBy = "bodime_details" )
+    @OneToMany(mappedBy = "bodime_details",fetch = FetchType.EAGER )
     private List<Bodime_Photos> bodime_photos;
-
 
     @OneToOne(mappedBy = "bodime_detail")
     private WebApp_User webApp_user1;
+
+    public String getBodimId() {
+        return bodimId;
+    }
+
+    public String getBodimPlaceName() {
+        return bodimPlaceName;
+    }
+
+    public String getLocationAddress() {
+        return locationAddress;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public List<Bodime_Photos> getBodime_photos() {
+        return bodime_photos;
+    }
 
     public Bodime_Detail(String bodimId, double price, int capacity, double distanceToUni, String type, int numChairs, int numFans, int numTables, int numNets, int kitchen, String locationAddress, String bodimPlaceName) {
         this.bodimId = bodimId;
@@ -87,10 +102,6 @@ public class Bodime_Detail {
         this.kitchen = kitchen;
         this.locationAddress = locationAddress;
         this.bodimPlaceName = bodimPlaceName;
-
-
-
-
     }
 
 
@@ -110,4 +121,5 @@ public class Bodime_Detail {
         this.nearestCity = nearestCity;
         this.bodimPlaceName = bodimPlaceName;
     }
+
 }

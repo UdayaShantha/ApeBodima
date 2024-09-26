@@ -13,7 +13,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import { registerUser } from "../apiConfig/apiService";
+//import { registerUser } from "../apiConfig/apiService";
 
 const Register = ({ closeDialog, registerStatus ,logStatus}) => {
   const [showPass, setShowPass] = useState(false);

@@ -1,8 +1,9 @@
-import { Button, Grid, IconButton, Rating, Typography } from "@mui/material";
+import { Button, Grid, IconButton,Typography } from "@mui/material";
 import React, { useState } from "react";
 import FindInPageIcon from "@mui/icons-material/FindInPage";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import GradeIcon from "@mui/icons-material/Grade";
+import Rating from "./Rating";
 const BoardimCard = ({ image, name, price, description, rating }) => {
   const [faviorite, setFaviorite] = useState(false);
   const checkfaviorite = () => {
@@ -47,7 +48,7 @@ const BoardimCard = ({ image, name, price, description, rating }) => {
           marginRight: "10px", // Optional margin for spacing
         }}
       >
-        <Rating readOnly />
+         <Rating rate={rating}/>
       </Grid>
 
       <Grid
@@ -73,7 +74,7 @@ const BoardimCard = ({ image, name, price, description, rating }) => {
             fontSize: "14px",
           }}
         >
-          {price}
+          <span>Rs </span>{price}
         </Typography>
       </Grid>
       <Grid

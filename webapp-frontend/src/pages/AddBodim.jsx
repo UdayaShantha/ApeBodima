@@ -230,7 +230,9 @@ const AddBodim = () => {
     const handleDrop = (e) => {
         e.preventDefault();
         const files = Array.from(e.dataTransfer.files);
-        const newImages = files.map((file) => URL.createObjectURL(file));
+        const newImages = files
+            .filter((file) => file.type === 'image/jpeg' || file.type === 'image/png')
+            .map((file) => URL.createObjectURL(file));
         setImages((prevImages) => [...prevImages, ...newImages]);
     };
     const handleDragOver = (e) => {
@@ -238,7 +240,9 @@ const AddBodim = () => {
     };
     const handleFileSelect = (e) => {
         const files = Array.from(e.target.files);
-        const newImages = files.map((file) => URL.createObjectURL(file));
+        const newImages = files
+            .filter((file) => file.type === 'image/jpeg' || file.type === 'image/png')
+            .map((file) => URL.createObjectURL(file));
         setImages((prevImages) => [...prevImages, ...newImages]);
     };
     const handleButtonClick = () => {

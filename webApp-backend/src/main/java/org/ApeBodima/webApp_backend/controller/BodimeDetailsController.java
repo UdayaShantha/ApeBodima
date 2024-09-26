@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/bodime-details")
+@RequestMapping("/api/v1/bodimeDetails")
 public class BodimeDetailsController {
    @Autowired
     private BodimeDetailsService bodimeDetailsService;

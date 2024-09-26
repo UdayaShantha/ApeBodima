@@ -41,8 +41,6 @@ const MainLayout = () => {
           className="footer"
           style={{
             position: "relative",
-            marginLeft:"5px",
-            marginRight:"8px"
           }}
         >
           <FooterComponent />

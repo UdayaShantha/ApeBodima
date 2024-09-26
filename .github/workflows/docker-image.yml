@@ -29,14 +29,14 @@ jobs:
     -
       name: Build and push backend
       uses: docker/build-push-action@v6
-      working-directory: ./webApp-backend
       with:
+          file: ./webApp-backend/Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/bodimabackend:latest
+          tags: sanjayapradeep/bodimabackend:latest
     -
       name: Build and push frontend
       uses: docker/build-push-action@v6
-      working-directory:  ./webapp-frontend
       with:
+          file: ./webApp-frontend/Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/bodimafrontend:latest
+          tags: sanjayapradeep/bodimafrontend:latests

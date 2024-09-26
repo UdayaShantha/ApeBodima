@@ -14,8 +14,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:"5px"}}><SearchAlertComponent/><Home /></div>} />
-          <Route path="/addBodim" element={<div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:"5px"}}><SearchAlertComponent/><AddBodim /></div>} />
+          <Route index element={<div style={{display:"flex",flexDirection:"column",alignItems:"center"}}><SearchAlertComponent/><Home /></div>} />
+          <Route path="/addBodim" element={<div><SearchAlertComponent/><AddBodim /></div>} />
           <Route path="/a" element={<AboutUs />} />
           <Route path="/filter" element={<FilterBar />} />
           <Route path="/explore" element={<><Explore /></>} />

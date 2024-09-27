@@ -131,7 +131,7 @@ const BoardingPlacesFinder = ({pageVal,getData}) => {
     try {
       // Construct the request URL
       const response = await axios.get(
-        `http://localhost:8090/api/v1/bodime-details/filter?page=${pageVal}&size=${size}&nearestCity=${nearestCity}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDistance=${minDistance}&maxDistance=${maxDistance}&capacity=${capacity}`
+        `http://localhost:8090/api/v1/bodimeDetails/filter?page=${pageVal}&size=${size}&nearestCity=${nearestCity}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDistance=${minDistance}&maxDistance=${maxDistance}&capacity=${capacity}`
       );
 
       // Display the response data in the console

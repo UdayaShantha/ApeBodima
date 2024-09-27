@@ -13,16 +13,20 @@ const Explore = () => {
   const [prev,setPrev]=useState(true);
   useEffect(()=>{
     const getAll = async () => {
+      console.log("test working");
+
       try {
         // Construct the request URL
+
         const response = await axios.get(
-          `http://localhost:8090/api/v1/bodime-details/get-all?page=${page}&size=${12}`
+          `http://localhost:8090/api/v1/bodimeDetails/get-all?page=${page}&size=${12}`
         );
   
         // Display the response data in the console
         console.log('Response Data:', response.data);
         setData(response.data);
       } catch (error) {
+
         console.error('Error fetching data:', error);
       }
     };

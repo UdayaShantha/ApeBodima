@@ -47,13 +47,17 @@ const Register = ({ closeDialog, registerStatus ,logStatus}) => {
 
   const submitForm=(event)=>{
       event.preventDefault();
-      setUser({name:name,email:email,username:username,password:password1});
       console.log(user);
       console.log(name);
       console.log("submitted ")
 
     
   }
+
+  useEffect(()=>{
+    setUser({name:name,email:email,username:username,password:password1});
+
+  },[name,email,username,password1])
   
 
   return (

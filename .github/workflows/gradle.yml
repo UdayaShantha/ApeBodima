@@ -2,9 +2,9 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "development", "Production", "master", "developer-*" ]
+    branches: [ "developer-*" ]
   pull_request:
-    branches: [ "master","Production" ]
+    branches: [ "development","master","Production" ]
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 

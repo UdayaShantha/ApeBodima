@@ -12,7 +12,7 @@ public class BodimeDetailsController {
    @Autowired
     private BodimeDetailsService bodimeDetailsService;
 
-    @PostMapping("/save/{userId}")
+    @PostMapping(path = "/save/{userId}")
     public String saveCustomer(@RequestBody BodimeDetailsSaveDTO bodimeDetailsSaveDTO,@PathVariable(value="userId") String userId){
         if (bodimeDetailsSaveDTO == null) {
             throw new IllegalArgumentException("BodimeDetailsSaveDTO cannot be null");

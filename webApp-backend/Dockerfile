@@ -5,7 +5,7 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR file
-COPY build/libs/webApp-backend-1.0.0-alpha.jar app.jar
+COPY /home/runner/work/ApeBodima/ApeBodima/webApp-backend/build/libs/webApp-backend-1.0.0-alpha.jar app.jar
 
 # Expose the port on which the Spring Boot application will run
 EXPOSE 8080

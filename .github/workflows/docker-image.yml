@@ -53,6 +53,6 @@ jobs:
       name: Build and push frontend
       uses: docker/build-push-action@v6
       with:
-          file: ./webApp-frontend/Dockerfile
+          file: ./webapp-frontend/Dockerfile
           push: true
-          tags: sanjayapradeep/bodimafrontend:latests
+          tags: sanjayapradeep/bodimafrontend:latest

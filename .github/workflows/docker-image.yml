@@ -48,7 +48,7 @@ jobs:
       with:
           file: ./webApp-backend/Dockerfile
           push: true
-          context: ./webAppbackend  # Build context includes JAR now
+          context: ./webApp-backend  # Build context includes JAR now
           tags: sanjayapradeep/bodimabackend:latest
     -
       name: Build and push frontend

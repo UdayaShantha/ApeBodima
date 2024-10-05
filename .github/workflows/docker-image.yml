@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   pull_request:
-    branches: [ "master","Production" ]
+    branches: [ "master","Production" ,"development"]
     types: [opened, synchronize]
   workflow_dispatch:
 
@@ -46,8 +46,8 @@ jobs:
       run: ls webApp-backend/build/libs    
       
       # Move built JAR to webAppbackend directory
-    - name: Copy Jar file to webApp-backend
-      run: mv webApp-backend/build/libs/webApp-backend-1.0.0-alpha.jar webApp-backend/build/libs/
+    # - name: Copy Jar file to webApp-backend
+    #   run: mv webApp-backend/build/libs/webApp-backend-1.0.0-alpha.jar webApp-backend/build/libs/
      
     -
       name: push backend

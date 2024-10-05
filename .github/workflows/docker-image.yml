@@ -40,20 +40,13 @@ jobs:
     - 
       name: Build with Gradle Wrapper
       run: ./gradlew build
-      working-directory: ./webApp-backend
-
-    - name: list
-      run: ls webApp-backend/build/libs    
+      working-directory: ./webApp-backend    
       
-      # Move built JAR to webAppbackend directory
-    # - name: Copy Jar file to webApp-backend
-    #   run: mv webApp-backend/build/libs/webApp-backend-1.0.0-alpha.jar webApp-backend/build/libs/
-     
     -
       name: push backend
       uses: docker/build-push-action@v6
       with:
-          file: ./webApp-backend/Dockerfile
+          # file: ./webApp-backend/Dockerfile
           push: true
           tags: sanjayapradeep/bodimabackend:latest
     -

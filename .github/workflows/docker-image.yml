@@ -43,7 +43,7 @@ jobs:
       working-directory: ./webApp-backend
 
     - name: list
-      run: ls webApp-backend/    
+      run: ls webApp-backend/build    
       
       # Move built JAR to webAppbackend directory
     # - name: Copy Jar file to webApp-backend

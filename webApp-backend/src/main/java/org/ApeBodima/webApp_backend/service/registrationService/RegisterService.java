@@ -30,7 +30,7 @@ public class RegisterService{
     public String addPublicUser(RegistrationDTO registrationDTO) {
         boolean isEmailValid=emailValidator(registrationDTO.getEmail());
         boolean isUserNameValid=userNameValidator(registrationDTO.getUsername());
-        //boolean isUserNameTaken=userNameUniqueness(registrationDTO.getUsername());
+        boolean isUserNameTaken=userNameUniqueness(registrationDTO.getUsername());
         boolean isNicValid=nicValidator(registrationDTO.getAppUserNIC());
         boolean isNicTaken=nicUniqueness(registrationDTO.getAppUserNIC());
 
@@ -40,9 +40,9 @@ public class RegisterService{
         if(!isUserNameValid){
             return "Sorry! Not a valid username";
         }
-//        if(isUserNameTaken){
-//            return "Sorry! User name already taken";
-//        }
+        if(isUserNameTaken){
+            return "Sorry! User name already taken";
+        }
         if(!isNicValid){
             return "Sorry! Not a valid NIC";
         }
@@ -59,7 +59,8 @@ public class RegisterService{
                 registrationDTO.getScNUm(),
                 registrationDTO.getCurrentLocation(),
                 AppUserRoleEnum.USER,
-                registrationDTO.getProfileImg()
+                registrationDTO.getProfileImg(),
+                registrationDTO.getBodime_details()
         );
 
         //TODO : SEND TOKEN USING JWT
@@ -72,7 +73,8 @@ public class RegisterService{
      *     WebApp user -> System user
      *------------------------------------*/
     public String changeToAdmin(){
-        WebApp_User user=webAppUserRepo.findByUsername(loginService.getCurrentLoggedInUsername());
+        WebApp_User user=webAppUserRepo.findByUsername(loginService.getCurrentLoggedInUsername()).orElse(null);
+        assert user != null;
         user.setAppUserRole(AppUserRoleEnum.ADMIN);
         webAppUserRepo.save(user);
         return "You are now admin";
@@ -87,9 +89,9 @@ public class RegisterService{
         //TODO: check the username valid or not
         return true;
     }
-//    private boolean userNameUniqueness(String userName){
-//       return webAppUserRepo.findByUsername(userName).isPresent();
-//    }
+    private boolean userNameUniqueness(String userName){
+       return webAppUserRepo.findByUsername(userName).isPresent();
+    }
 
     private boolean nicValidator(String userNic){
         Matcher matcher = VALID_NIC_REGEX.matcher(userNic);

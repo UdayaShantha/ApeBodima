@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import org.ApeBodima.webApp_backend.entity.Bodime_Detail;
 
 @ToString
 @EqualsAndHashCode
@@ -18,4 +19,5 @@ public class RegistrationDTO {
     private String currentLocation;
     private String email;
     private byte[] profileImg;
+    private Bodime_Detail bodime_details;
 }

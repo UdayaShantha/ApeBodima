@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ApeBodima.webApp_backend.entity.WebApp_User;
 
 import java.util.List;
 
@@ -29,4 +30,5 @@ public class BodimeDetailsSaveDTO {
     private String bodimPlaceName;
     private List<BodimeContactSaveDTO> contacts;
     private List<BodimeReviewSaveDTO> reviews;
+
 }

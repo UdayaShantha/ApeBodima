@@ -21,8 +21,15 @@ public class RegisterController {
     //Define the Endpoint for registration
     @PostMapping("/user")
     public ResponseEntity<String> createUser(@RequestBody RegistrationDTO registrationDTO){
+
         String sanitizedResponse = StringEscapeUtils.escapeHtml4(registerService.addPublicUser(registrationDTO));
         return ResponseEntity.ok(sanitizedResponse);
+
+        if(registrationDTO ==null){
+            return ResponseEntity.ok("incomplete data");
+        }
+        return ResponseEntity.ok(registerService.addPublicUser(registrationDTO));
+
     }
 
 

@@ -1,81 +1,80 @@
 .footer {
-    display: flex;
-    justify-content: space-between;
-    background-color: #f6b3b3;
-    padding: 20px;
-    
-  }
+  display: flex;
+  justify-content: space-between;
+  background-color: #f6b3b3;
+  padding: 20px;
   
-  .footer-section {
-    flex: 1;
-    padding: 0 10px;
-  }
+}
+
+.footer-section {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.subscribe-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.subscribe-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter-image {
+  width: 100%;
+  max-width: 150px;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+.social-links li {
+  margin-bottom: 10px;
+}
+
+.social-links li a img {
   
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
+  width: 24px;
+  height: 24px;
   
-  .subscribe-form {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .subscribe-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  .subscribe-form button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .newsletter-image {
-    width: 100%;
-    max-width: 150px;
-  }
-  
-  .footer-section h4 {
-    margin-bottom: 10px;
-  }
-  
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-section ul li {
-    margin-bottom: 5px;
-  }
-  
-  .footer-section ul li a {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .social-links {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .social-links li {
-    margin-bottom: 10px;
-  }
-  
-  .social-links li a img {
-    
-    width: 24px;
-    height: 24px;
-    
-  }
-  
+}

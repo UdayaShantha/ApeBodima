@@ -14,7 +14,6 @@ import lombok.extern.apachecommons.CommonsLog;
 
 public class Bodime_Contact {
 
-
     @ManyToOne
     @JoinColumn(name="bodime_id",nullable=false)
     private Bodime_Detail bodime_details;

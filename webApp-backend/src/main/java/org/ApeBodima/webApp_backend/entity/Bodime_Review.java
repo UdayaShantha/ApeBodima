@@ -15,7 +15,6 @@ public class Bodime_Review {
     @ManyToOne
     @JoinColumn(name="bodime_id",nullable=false)
     private Bodime_Detail bodime_details;
-
     @Id
     @Column(name = "comment_id")
     private String commentId;

@@ -18,6 +18,17 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface BodimeMapper {
+    BodimeDetailsSaveDTO bodimeDetailToBodimeDetailsSaveDTO(Bodime_Detail bodime_detail);
+
+
+
+    BodimeContactSaveDTO contactEntityToDTO(Bodime_Contact bodime_contact);
+
+
+
+
+
+    BodimeReviewSaveDTO reviewEntityToDTO(Bodime_Review bodime_review);
 
 
 
@@ -26,13 +37,10 @@ public interface BodimeMapper {
     List<BodimeReviewSaveDTO> entityListToDTOList2(List<Bodime_Review> bodime_reviews);
 
 
-    BodimeContactSaveDTO contactEntityToDTO(Bodime_Contact bodime_contact);
-
-    BodimeReviewSaveDTO reviewEntityToDTO(Bodime_Review bodime_review);
 
 
 
-    BodimeDetailsSaveDTO bodimeDetailToBodimeDetailsSaveDTO(Bodime_Detail bodime_detail);
+
 
     List<BodimeDetailsSaveDTO> entityListToDoList3(List<Bodime_Detail> bodime_details);
     List<BodimeDetailsSaveDTO> pagetoDtoList(Page<Bodime_Detail> bodime_detail);
@@ -41,3 +49,5 @@ public interface BodimeMapper {
 
 
 }
+
+

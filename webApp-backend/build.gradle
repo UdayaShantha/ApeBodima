@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
+	id "org.sonarqube" version "4.4.1.3373"
 }
 
 group = 'org.ApeBodima'
@@ -12,6 +13,14 @@ java {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
+sonar {
+	properties {
+		property "sonar.projectKey", "ApeBodima"
+		property "sonar.organization", "spradeepindie"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
+}
+
 
 configurations {
 	compileOnly {
@@ -35,7 +44,7 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 
 	// https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor
-	implementation 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'//Spring boot DevTools
 	compileOnly 'org.projectlombok:lombok'//lombok-compile
 	runtimeOnly 'com.mysql:mysql-connector-j'//mysql JDBC connector
@@ -51,3 +60,5 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+

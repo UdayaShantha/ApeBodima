@@ -3,7 +3,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the container
-COPY package*.json ./
+COPY webapp-frontend/package*.json ./
 
 # Install dependencies
 RUN npm install

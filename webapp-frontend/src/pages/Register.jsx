@@ -13,6 +13,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import CloseIcon from "@mui/icons-material/Close";
+//import { registerUser } from "../apiConfig/apiService";
+
 const Register = ({ closeDialog, registerStatus ,logStatus}) => {
   const [showPass, setShowPass] = useState(false);
   const [firstPassShow, setFirstPassShow] = useState(false);
@@ -47,13 +49,17 @@ const Register = ({ closeDialog, registerStatus ,logStatus}) => {
 
   const submitForm=(event)=>{
       event.preventDefault();
-      setUser({name:name,email:email,username:username,password:password1});
       console.log(user);
       console.log(name);
       console.log("submitted ")
-
+      event.preventDefault();
     
   }
+
+  useEffect(()=>{
+    setUser({name:name,email:email,username:username,password:password1});
+
+  },[name,email,username,password1])
   
 
   return (

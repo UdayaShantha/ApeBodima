@@ -21,8 +21,6 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import PeopleIcon from '@mui/icons-material/People';
 import axios from 'axios';
-import BoardimCard from '../component/BoardimCard';
-import bodimimage from '../component/images/BoardimCard.png';
 const theme = createTheme({
   typography: {
     fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif',
@@ -95,7 +93,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
 }));
 
-const BoardingPlacesFinder = () => {
+const BoardingPlacesFinder = ({pageVal,getData}) => {
  // const [places, setPlaces] = useState([]);
   /*const [filters, setFilters] = useState({ price: '', distance: '', capacity: '' });*/
  /* const [searchQuery, setSearchQuery] = useState('');*/
@@ -119,8 +117,7 @@ const BoardingPlacesFinder = () => {
 
 
 
-  const[page,setpage] = useState(0);
-  const[size,setSize] = useState(10);
+  const[size,setSize] = useState(12);
   const[nearestCity,setNearestCity] = useState("");
   const[minPrice,setMinPrice] = useState(0);
   const[maxPrice,setMaxPrice] = useState(0);
@@ -128,20 +125,18 @@ const BoardingPlacesFinder = () => {
   const[maxDistance,setMaxDistance] = useState(0);
   const[capacity,setCapacity] = useState(0);
   
-  const [data,setData] = useState([]);
   const handleSearch = async (e) => {
     e.preventDefault();
-    setpage(0);
     setSize(10);
     try {
       // Construct the request URL
       const response = await axios.get(
-        `http://localhost:8090/api/v1/bodime-details/filter?page=${page}&size=${size}&nearestCity=${nearestCity}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDistance=${minDistance}&maxDistance=${maxDistance}&capacity=${capacity}`
+        `http://localhost:8090/api/v1/bodimeDetails/filter?page=${pageVal}&size=${size}&nearestCity=${nearestCity}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDistance=${minDistance}&maxDistance=${maxDistance}&capacity=${capacity}`
       );
 
       // Display the response data in the console
       console.log('Response Data:', response.data);
-      setData(response.data);
+      getData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -311,9 +306,7 @@ const BoardingPlacesFinder = () => {
         
         
       }}>
-          {data.map((item,index) => (
-               <BoardimCard key = {index} image={bodimimage} name={item.bodimPlaceName} price={item.price} description={item.type} rating={item.rating}/>
-          ))}
+          
          
     
       </div>

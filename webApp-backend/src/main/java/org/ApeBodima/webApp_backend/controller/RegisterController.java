@@ -2,6 +2,7 @@ package org.ApeBodima.webApp_backend.controller;
 
 import org.ApeBodima.webApp_backend.DTO.registration.RegistrationDTO;
 import org.ApeBodima.webApp_backend.service.registrationService.RegisterService;
+import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,8 @@ public class RegisterController {
     //Define the Endpoint for registration
     @PostMapping("/user")
     public ResponseEntity<String> createUser(@RequestBody RegistrationDTO registrationDTO){
-        return ResponseEntity.ok(registerService.addPublicUser(registrationDTO));
+        String sanitizedResponse = StringEscapeUtils.escapeHtml4(registerService.addPublicUser(registrationDTO));
+        return ResponseEntity.ok(sanitizedResponse);
     }
 
 
